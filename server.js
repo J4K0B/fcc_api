@@ -1,4 +1,5 @@
 var express = require("express");
+var path    = require("path");
 var app = express();
 var unix;
 var natural;
@@ -7,7 +8,9 @@ var month;
 var day;
 var timestamp;
 
-
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname+'/index.html'));
+})
 app.get('/:param', function (req, res) {
   var param = req.params.param.toString();
   if (!isNaN(param)){
